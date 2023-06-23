@@ -1,0 +1,9 @@
+{
+	"name": "Testeurocomp",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f5d6ec23-2891-494b-84ef-e03d3eeb231e",
+		"tenantId": "548219f7-3990-4bd5-aac7-9225528b06fe"
+	}
+}
