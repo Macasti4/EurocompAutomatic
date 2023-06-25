@@ -7,10 +7,236 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "handleId",
+				"type": "varchar"
+			},
+			{
+				"name": "fieldType",
+				"type": "varchar"
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "description",
+				"type": "varchar"
+			},
+			{
+				"name": "productImageUrl",
+				"type": "varchar"
+			},
+			{
+				"name": "collection",
+				"type": "varchar"
+			},
+			{
+				"name": "sku",
+				"type": "varchar"
+			},
+			{
+				"name": "ribbon",
+				"type": "varchar"
+			},
+			{
+				"name": "price",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "surcharge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "visible",
+				"type": "bit"
+			},
+			{
+				"name": "discountMode",
+				"type": "varchar"
+			},
+			{
+				"name": "discountValue",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "inventory",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "weight",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "cost",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "productOptionName1",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType1",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription1",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionName2",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType2",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription2",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionName3",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType3",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription3",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionName4",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType4",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription4",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionName5",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType5",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription5",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionName6",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionType6",
+				"type": "varchar"
+			},
+			{
+				"name": "productOptionDescription6",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle1",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription1",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle2",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription2",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle3",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription3",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle4",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription4",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle5",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription5",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoTitle6",
+				"type": "varchar"
+			},
+			{
+				"name": "additionalInfoDescription6",
+				"type": "varchar"
+			},
+			{
+				"name": "customTextField1",
+				"type": "varchar"
+			},
+			{
+				"name": "customTextCharLimit1",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customTextMandatory1",
+				"type": "bit"
+			},
+			{
+				"name": "customTextField2",
+				"type": "varchar"
+			},
+			{
+				"name": "customTextCharLimit2",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "customTextMandatory2",
+				"type": "bit"
+			},
+			{
+				"name": "brand",
+				"type": "varchar"
+			}
+		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "test"
+			"table": "EjemploTabla"
 		}
 	}
 }
