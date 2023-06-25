@@ -8,7 +8,7 @@
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
-					"retry": 2,
+					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
@@ -33,7 +33,7 @@
 										"referenceName": "AzureSqlTable1",
 										"type": "DatasetReference"
 									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tstore_id as integer,\n\t\tstore_name as string,\n\t\tphone as string,\n\t\temail as string,\n\t\tstreet as string,\n\t\tcity as string,\n\t\tstate as string,\n\t\tzip_code as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> UserQueryAzureSqlTable1"
+									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tdeletable:true,\n\tinsertable:true,\n\tupdateable:true,\n\tupsertable:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\thandleId,\n\t\tfieldType,\n\t\tname,\n\t\tdescription,\n\t\tproductImageUrl,\n\t\tcollection,\n\t\tsku,\n\t\tribbon,\n\t\tprice,\n\t\tsurcharge,\n\t\tvisible,\n\t\tdiscountMode,\n\t\tdiscountValue,\n\t\tinventory,\n\t\tweight,\n\t\tcost,\n\t\tproductOptionName1,\n\t\tproductOptionType1,\n\t\tproductOptionDescription1,\n\t\tproductOptionName2,\n\t\tproductOptionType2,\n\t\tproductOptionDescription2,\n\t\tproductOptionName3,\n\t\tproductOptionType3,\n\t\tproductOptionDescription3,\n\t\tproductOptionName4,\n\t\tproductOptionType4,\n\t\tproductOptionDescription4,\n\t\tproductOptionName5,\n\t\tproductOptionType5,\n\t\tproductOptionDescription5,\n\t\tproductOptionName6,\n\t\tproductOptionType6,\n\t\tproductOptionDescription6,\n\t\tadditionalInfoTitle1,\n\t\tadditionalInfoDescription1,\n\t\tadditionalInfoTitle2,\n\t\tadditionalInfoDescription2,\n\t\tadditionalInfoTitle3,\n\t\tadditionalInfoDescription3,\n\t\tadditionalInfoTitle4,\n\t\tadditionalInfoDescription4,\n\t\tadditionalInfoTitle5,\n\t\tadditionalInfoDescription5,\n\t\tadditionalInfoTitle6,\n\t\tadditionalInfoDescription6,\n\t\tcustomTextField1,\n\t\tcustomTextCharLimit1,\n\t\tcustomTextMandatory1,\n\t\tcustomTextField2,\n\t\tcustomTextCharLimit2,\n\t\tcustomTextMandatory2,\n\t\tbrand\n\t)) ~> UserQueryAzureSqlTable1"
 								}
 							]
 						}
