@@ -622,7 +622,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/testpython/blobs/",
+					"blobPathBeginsWith": "/testpython/blobs/inventario_eurocomp",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('trigger2_properties_typeProperties_scope')]",
 					"events": [
