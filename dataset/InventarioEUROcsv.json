@@ -1,0 +1,196 @@
+{
+	"name": "InventarioEUROcsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "inventario_eurocomp.csv",
+				"container": "testpython"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "codigo",
+				"type": "String"
+			},
+			{
+				"name": "cod_producto",
+				"type": "String"
+			},
+			{
+				"name": "cod_proveedor",
+				"type": "String"
+			},
+			{
+				"name": "cod_hacienda",
+				"type": "String"
+			},
+			{
+				"name": "descripcion",
+				"type": "String"
+			},
+			{
+				"name": "desc_corta",
+				"type": "String"
+			},
+			{
+				"name": "presentacion",
+				"type": "String"
+			},
+			{
+				"name": "colores",
+				"type": "String"
+			},
+			{
+				"name": "familia_id",
+				"type": "String"
+			},
+			{
+				"name": "familia",
+				"type": "String"
+			},
+			{
+				"name": "marca",
+				"type": "String"
+			},
+			{
+				"name": "clase",
+				"type": "String"
+			},
+			{
+				"name": "modelo",
+				"type": "String"
+			},
+			{
+				"name": "item_grupo_1",
+				"type": "String"
+			},
+			{
+				"name": "item_grupo_2",
+				"type": "String"
+			},
+			{
+				"name": "item_grupo_3",
+				"type": "String"
+			},
+			{
+				"name": "precio",
+				"type": "String"
+			},
+			{
+				"name": "stock",
+				"type": "String"
+			},
+			{
+				"name": "image_url",
+				"type": "String"
+			},
+			{
+				"name": "image_url_1",
+				"type": "String"
+			},
+			{
+				"name": "image_url_2",
+				"type": "String"
+			},
+			{
+				"name": "image_url_3",
+				"type": "String"
+			},
+			{
+				"name": "image_url_4",
+				"type": "String"
+			},
+			{
+				"name": "image_url_5",
+				"type": "String"
+			},
+			{
+				"name": "caracteristicas",
+				"type": "String"
+			},
+			{
+				"name": "itemref_1",
+				"type": "String"
+			},
+			{
+				"name": "itemref_2",
+				"type": "String"
+			},
+			{
+				"name": "itemref_3",
+				"type": "String"
+			},
+			{
+				"name": "itemref_4",
+				"type": "String"
+			},
+			{
+				"name": "itemref_5",
+				"type": "String"
+			},
+			{
+				"name": "itemref_6",
+				"type": "String"
+			},
+			{
+				"name": "itemref_7",
+				"type": "String"
+			},
+			{
+				"name": "itemref_8",
+				"type": "String"
+			},
+			{
+				"name": "itemref_9",
+				"type": "String"
+			},
+			{
+				"name": "itemref_10",
+				"type": "String"
+			},
+			{
+				"name": "itemref_11",
+				"type": "String"
+			},
+			{
+				"name": "itemref_12",
+				"type": "String"
+			},
+			{
+				"name": "itemref_13",
+				"type": "String"
+			},
+			{
+				"name": "itemref_14",
+				"type": "String"
+			},
+			{
+				"name": "privacidad",
+				"type": "String"
+			},
+			{
+				"name": "peso",
+				"type": "String"
+			},
+			{
+				"name": "medida",
+				"type": "String"
+			},
+			{
+				"name": "equivalencia",
+				"type": "String"
+			}
+		]
+	}
+}
