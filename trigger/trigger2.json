@@ -1,0 +1,24 @@
+{
+	"name": "trigger2",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/testpython/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/00523ed9-4ac0-4e0c-8999-d8b18f922bde/resourceGroups/eurocomp/providers/Microsoft.Storage/storageAccounts/eurocomp417d5b",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
