@@ -34,14 +34,6 @@
 										"type": "DatasetReference"
 									},
 									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\thandleId as string,\n\t\tfieldType as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tproductImageUrl as string,\n\t\tcollection as string,\n\t\tsku as string,\n\t\tribbon as string,\n\t\tprice as decimal(10,2),\n\t\tsurcharge as decimal(10,2),\n\t\tvisible as boolean,\n\t\tdiscountMode as string,\n\t\tdiscountValue as decimal(10,2),\n\t\tinventory as integer,\n\t\tweight as decimal(10,2),\n\t\tcost as decimal(10,2),\n\t\tproductOptionName1 as string,\n\t\tproductOptionType1 as string,\n\t\tproductOptionDescription1 as string,\n\t\tproductOptionName2 as string,\n\t\tproductOptionType2 as string,\n\t\tproductOptionDescription2 as string,\n\t\tproductOptionName3 as string,\n\t\tproductOptionType3 as string,\n\t\tproductOptionDescription3 as string,\n\t\tproductOptionName4 as string,\n\t\tproductOptionType4 as string,\n\t\tproductOptionDescription4 as string,\n\t\tproductOptionName5 as string,\n\t\tproductOptionType5 as string,\n\t\tproductOptionDescription5 as string,\n\t\tproductOptionName6 as string,\n\t\tproductOptionType6 as string,\n\t\tproductOptionDescription6 as string,\n\t\tadditionalInfoTitle1 as string,\n\t\tadditionalInfoDescription1 as string,\n\t\tadditionalInfoTitle2 as string,\n\t\tadditionalInfoDescription2 as string,\n\t\tadditionalInfoTitle3 as string,\n\t\tadditionalInfoDescription3 as string,\n\t\tadditionalInfoTitle4 as string,\n\t\tadditionalInfoDescription4 as string,\n\t\tadditionalInfoTitle5 as string,\n\t\tadditionalInfoDescription5 as string,\n\t\tadditionalInfoTitle6 as string,\n\t\tadditionalInfoDescription6 as string,\n\t\tcustomTextField1 as string,\n\t\tcustomTextCharLimit1 as integer,\n\t\tcustomTextMandatory1 as boolean,\n\t\tcustomTextField2 as string,\n\t\tcustomTextCharLimit2 as integer,\n\t\tcustomTextMandatory2 as boolean,\n\t\tbrand as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> UserQueryAzureSqlTable1"
-								},
-								{
-									"name": "UserQueryDelimitedText1",
-									"dataset": {
-										"referenceName": "DelimitedText1",
-										"type": "DatasetReference"
-									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\t{Este es el contenido del archivo generado.} as string\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> UserQueryDelimitedText1"
 								}
 							]
 						}
