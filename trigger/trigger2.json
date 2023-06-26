@@ -14,6 +14,7 @@
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/testpython/blobs/",
+			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": false,
 			"scope": "/subscriptions/00523ed9-4ac0-4e0c-8999-d8b18f922bde/resourceGroups/eurocomp/providers/Microsoft.Storage/storageAccounts/eurocomp417d5b",
 			"events": [
