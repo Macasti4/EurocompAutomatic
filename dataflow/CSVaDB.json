@@ -1,12 +1,12 @@
 {
-	"name": "powerquery1",
+	"name": "CSVaDB",
 	"properties": {
 		"type": "WranglingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"name": "InventarioEUROcsv",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  InventarioEUROcsv",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> InventarioEUROcsv",
 					"dataset": {
 						"referenceName": "InventarioEUROcsv",
 						"type": "DatasetReference"
