@@ -1,5 +1,5 @@
 {
-	"name": "Excel1",
+	"name": "inventario_eurocomp",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
