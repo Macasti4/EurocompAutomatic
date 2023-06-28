@@ -6,13 +6,15 @@
 			"sources": [
 				{
 					"name": "InventarioEUROcsv",
-					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~>  InventarioEUROcsv",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> InventarioEUROcsv",
 					"dataset": {
-						"referenceName": "InventarioEUROcsv",
+						"referenceName": "inventario_eurocompcsv",
 						"type": "DatasetReference"
 					}
 				}
-			]
+			],
+			"script": "section Section1;\r\nshared inventario_eurocompcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared InventarioEUROcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"InventarioEUROcsv\" in Source;\r\n",
+			"documentLocale": "en-us"
 		}
 	}
 }

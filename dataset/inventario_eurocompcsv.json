@@ -20,175 +20,215 @@
 		},
 		"schema": [
 			{
-				"name": "codigo",
+				"name": "handleId",
 				"type": "String"
 			},
 			{
-				"name": "cod_producto",
+				"name": "fieldType",
 				"type": "String"
 			},
 			{
-				"name": "cod_proveedor",
+				"name": "name",
 				"type": "String"
 			},
 			{
-				"name": "cod_hacienda",
+				"name": "description",
 				"type": "String"
 			},
 			{
-				"name": "descripcion",
+				"name": "productImageUrl",
 				"type": "String"
 			},
 			{
-				"name": "desc_corta",
+				"name": "collection",
 				"type": "String"
 			},
 			{
-				"name": "presentacion",
+				"name": "sku",
 				"type": "String"
 			},
 			{
-				"name": "colores",
+				"name": "ribbon",
 				"type": "String"
 			},
 			{
-				"name": "familia_id",
+				"name": "price",
 				"type": "String"
 			},
 			{
-				"name": "familia",
+				"name": "surcharge",
 				"type": "String"
 			},
 			{
-				"name": "marca",
+				"name": "visible",
 				"type": "String"
 			},
 			{
-				"name": "clase",
+				"name": "discountMode",
 				"type": "String"
 			},
 			{
-				"name": "modelo",
+				"name": "discountValue",
 				"type": "String"
 			},
 			{
-				"name": "item_grupo_1",
+				"name": "inventory",
 				"type": "String"
 			},
 			{
-				"name": "item_grupo_2",
+				"name": "weight",
 				"type": "String"
 			},
 			{
-				"name": "item_grupo_3",
+				"name": "cost",
 				"type": "String"
 			},
 			{
-				"name": "precio",
+				"name": "productOptionName1",
 				"type": "String"
 			},
 			{
-				"name": "stock",
+				"name": "productOptionType1",
 				"type": "String"
 			},
 			{
-				"name": "image_url",
+				"name": "productOptionDescription1",
 				"type": "String"
 			},
 			{
-				"name": "image_url_1",
+				"name": "productOptionName2",
 				"type": "String"
 			},
 			{
-				"name": "image_url_2",
+				"name": "productOptionType2",
 				"type": "String"
 			},
 			{
-				"name": "image_url_3",
+				"name": "productOptionDescription2",
 				"type": "String"
 			},
 			{
-				"name": "image_url_4",
+				"name": "productOptionName3",
 				"type": "String"
 			},
 			{
-				"name": "image_url_5",
+				"name": "productOptionType3",
 				"type": "String"
 			},
 			{
-				"name": "caracteristicas",
+				"name": "productOptionDescription3",
 				"type": "String"
 			},
 			{
-				"name": "itemref_1",
+				"name": "productOptionName4",
 				"type": "String"
 			},
 			{
-				"name": "itemref_2",
+				"name": "productOptionType4",
 				"type": "String"
 			},
 			{
-				"name": "itemref_3",
+				"name": "productOptionDescription4",
 				"type": "String"
 			},
 			{
-				"name": "itemref_4",
+				"name": "productOptionName5",
 				"type": "String"
 			},
 			{
-				"name": "itemref_5",
+				"name": "productOptionType5",
 				"type": "String"
 			},
 			{
-				"name": "itemref_6",
+				"name": "productOptionDescription5",
 				"type": "String"
 			},
 			{
-				"name": "itemref_7",
+				"name": "productOptionName6",
 				"type": "String"
 			},
 			{
-				"name": "itemref_8",
+				"name": "productOptionType6",
 				"type": "String"
 			},
 			{
-				"name": "itemref_9",
+				"name": "productOptionDescription6",
 				"type": "String"
 			},
 			{
-				"name": "itemref_10",
+				"name": "additionalInfoTitle1",
 				"type": "String"
 			},
 			{
-				"name": "itemref_11",
+				"name": "additionalInfoDescription1",
 				"type": "String"
 			},
 			{
-				"name": "itemref_12",
+				"name": "additionalInfoTitle2",
 				"type": "String"
 			},
 			{
-				"name": "itemref_13",
+				"name": "additionalInfoDescription2",
 				"type": "String"
 			},
 			{
-				"name": "itemref_14",
+				"name": "additionalInfoTitle3",
 				"type": "String"
 			},
 			{
-				"name": "privacidad",
+				"name": "additionalInfoDescription3",
 				"type": "String"
 			},
 			{
-				"name": "peso",
+				"name": "additionalInfoTitle4",
 				"type": "String"
 			},
 			{
-				"name": "medida",
+				"name": "additionalInfoDescription4",
 				"type": "String"
 			},
 			{
-				"name": "equivalencia",
+				"name": "additionalInfoTitle5",
+				"type": "String"
+			},
+			{
+				"name": "additionalInfoDescription5",
+				"type": "String"
+			},
+			{
+				"name": "additionalInfoTitle6",
+				"type": "String"
+			},
+			{
+				"name": "additionalInfoDescription6",
+				"type": "String"
+			},
+			{
+				"name": "customTextField1",
+				"type": "String"
+			},
+			{
+				"name": "customTextCharLimit1",
+				"type": "String"
+			},
+			{
+				"name": "customTextMandatory1",
+				"type": "String"
+			},
+			{
+				"name": "customTextField2",
+				"type": "String"
+			},
+			{
+				"name": "customTextCharLimit2",
+				"type": "String"
+			},
+			{
+				"name": "customTextMandatory2",
+				"type": "String"
+			},
+			{
+				"name": "brand",
 				"type": "String"
 			}
 		]
