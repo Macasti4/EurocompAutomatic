@@ -8,6 +8,9 @@
 		"AzureBlobStorage1_connectionString": {
 			"value": ""
 		},
+		"AzureMySql1_connectionString": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_connectionString": {
 			"value": ""
 		},

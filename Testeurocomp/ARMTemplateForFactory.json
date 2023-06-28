@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
 		},
+		"AzureMySql1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureMySql1'"
+		},
 		"AzureSqlDatabase1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
@@ -26,6 +30,727 @@
 	"resources": [
 		{
 			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": true,
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "handleId",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "handleId",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "fieldType",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "fieldType",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "name",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "name",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "description",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "description",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productImageUrl",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productImageUrl",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "collection",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "collection",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "sku",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "sku",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "ribbon",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "ribbon",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "price",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "price",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 10
+										}
+									},
+									{
+										"source": {
+											"name": "surcharge",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "surcharge",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 10
+										}
+									},
+									{
+										"source": {
+											"name": "visible",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "visible",
+											"type": "Boolean",
+											"physicalType": "bit"
+										}
+									},
+									{
+										"source": {
+											"name": "discountMode",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "discountMode",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "discountValue",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "discountValue",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 10
+										}
+									},
+									{
+										"source": {
+											"name": "inventory",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "inventory",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "weight",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "weight",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 10
+										}
+									},
+									{
+										"source": {
+											"name": "cost",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "cost",
+											"type": "Decimal",
+											"physicalType": "decimal",
+											"scale": 2,
+											"precision": 10
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName4",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType4",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription4",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName5",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType5",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription5",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionName6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionName6",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionType6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionType6",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "productOptionDescription6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "productOptionDescription6",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription3",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription3",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle4",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription4",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription4",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle5",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription5",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription5",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoTitle6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoTitle6",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "additionalInfoDescription6",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "additionalInfoDescription6",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextField1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextField1",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextCharLimit1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextCharLimit1",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextMandatory1",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextMandatory1",
+											"type": "Boolean",
+											"physicalType": "bit"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextField2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextField2",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextCharLimit2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextCharLimit2",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "customTextMandatory2",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "customTextMandatory2",
+											"type": "Boolean",
+											"physicalType": "bit"
+										}
+									},
+									{
+										"source": {
+											"name": "brand",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "brand",
+											"type": "String",
+											"physicalType": "nvarchar"
+										}
+									}
+								],
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "inventario_eurocompcsv",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTable1",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/inventario_eurocompcsv')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline2')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -67,7 +792,7 @@
 												"type": "DatasetReference",
 												"parameters": {}
 											},
-											"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\thandleId as string,\n\t\tfieldType as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tproductImageUrl as string,\n\t\tcollection as string,\n\t\tsku as string,\n\t\tribbon as string,\n\t\tprice as decimal(10,2),\n\t\tsurcharge as decimal(10,2),\n\t\tvisible as boolean,\n\t\tdiscountMode as string,\n\t\tdiscountValue as decimal(10,2),\n\t\tinventory as integer,\n\t\tweight as decimal(10,2),\n\t\tcost as decimal(10,2),\n\t\tproductOptionName1 as string,\n\t\tproductOptionType1 as string,\n\t\tproductOptionDescription1 as string,\n\t\tproductOptionName2 as string,\n\t\tproductOptionType2 as string,\n\t\tproductOptionDescription2 as string,\n\t\tproductOptionName3 as string,\n\t\tproductOptionType3 as string,\n\t\tproductOptionDescription3 as string,\n\t\tproductOptionName4 as string,\n\t\tproductOptionType4 as string,\n\t\tproductOptionDescription4 as string,\n\t\tproductOptionName5 as string,\n\t\tproductOptionType5 as string,\n\t\tproductOptionDescription5 as string,\n\t\tproductOptionName6 as string,\n\t\tproductOptionType6 as string,\n\t\tproductOptionDescription6 as string,\n\t\tadditionalInfoTitle1 as string,\n\t\tadditionalInfoDescription1 as string,\n\t\tadditionalInfoTitle2 as string,\n\t\tadditionalInfoDescription2 as string,\n\t\tadditionalInfoTitle3 as string,\n\t\tadditionalInfoDescription3 as string,\n\t\tadditionalInfoTitle4 as string,\n\t\tadditionalInfoDescription4 as string,\n\t\tadditionalInfoTitle5 as string,\n\t\tadditionalInfoDescription5 as string,\n\t\tadditionalInfoTitle6 as string,\n\t\tadditionalInfoDescription6 as string,\n\t\tcustomTextField1 as string,\n\t\tcustomTextCharLimit1 as integer,\n\t\tcustomTextMandatory1 as boolean,\n\t\tcustomTextField2 as string,\n\t\tcustomTextCharLimit2 as integer,\n\t\tcustomTextMandatory2 as boolean,\n\t\tbrand as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> UserQueryAzureSqlTable1"
+											"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\thandleId as string,\n\t\tfieldType as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tproductImageUrl as string,\n\t\tcollection as string,\n\t\tsku as string,\n\t\tribbon as string,\n\t\tprice as decimal(10,2),\n\t\tsurcharge as decimal(10,2),\n\t\tvisible as boolean,\n\t\tdiscountMode as string,\n\t\tdiscountValue as decimal(10,2),\n\t\tinventory as integer,\n\t\tweight as decimal(10,2),\n\t\tcost as decimal(10,2),\n\t\tproductOptionName1 as string,\n\t\tproductOptionType1 as string,\n\t\tproductOptionDescription1 as string,\n\t\tproductOptionName2 as string,\n\t\tproductOptionType2 as string,\n\t\tproductOptionDescription2 as string,\n\t\tproductOptionName3 as string,\n\t\tproductOptionType3 as string,\n\t\tproductOptionDescription3 as string,\n\t\tproductOptionName4 as string,\n\t\tproductOptionType4 as string,\n\t\tproductOptionDescription4 as string,\n\t\tproductOptionName5 as string,\n\t\tproductOptionType5 as string,\n\t\tproductOptionDescription5 as string,\n\t\tproductOptionName6 as string,\n\t\tproductOptionType6 as string,\n\t\tproductOptionDescription6 as string,\n\t\tadditionalInfoTitle1 as string,\n\t\tadditionalInfoDescription1 as string,\n\t\tadditionalInfoTitle2 as string,\n\t\tadditionalInfoDescription2 as string,\n\t\tadditionalInfoTitle3 as string,\n\t\tadditionalInfoDescription3 as string,\n\t\tadditionalInfoTitle4 as string,\n\t\tadditionalInfoDescription4 as string,\n\t\tadditionalInfoTitle5 as string,\n\t\tadditionalInfoDescription5 as string,\n\t\tadditionalInfoTitle6 as string,\n\t\tadditionalInfoDescription6 as string,\n\t\tcustomTextField1 as string,\n\t\tcustomTextCharLimit1 as integer,\n\t\tcustomTextMandatory1 as boolean,\n\t\tcustomTextField2 as string,\n\t\tcustomTextCharLimit2 as integer,\n\t\tcustomTextMandatory2 as boolean,\n\t\tbrand as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> UserQueryAzureSqlTable1"
 										}
 									]
 								}
@@ -84,6 +809,26 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/powerquery1')]",
 				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureMySqlTable1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureMySql1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureMySqlTable",
+				"schema": [],
+				"typeProperties": {
+					"tableName": "ejemplotablamysql"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureMySql1')]"
 			]
 		},
 		{
@@ -367,7 +1112,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/InventarioEUROcsv')]",
+			"name": "[concat(parameters('factoryName'), '/inventario_eurocompcsv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -390,175 +1135,215 @@
 				},
 				"schema": [
 					{
-						"name": "codigo",
+						"name": "handleId",
 						"type": "String"
 					},
 					{
-						"name": "cod_producto",
+						"name": "fieldType",
 						"type": "String"
 					},
 					{
-						"name": "cod_proveedor",
+						"name": "name",
 						"type": "String"
 					},
 					{
-						"name": "cod_hacienda",
+						"name": "description",
 						"type": "String"
 					},
 					{
-						"name": "descripcion",
+						"name": "productImageUrl",
 						"type": "String"
 					},
 					{
-						"name": "desc_corta",
+						"name": "collection",
 						"type": "String"
 					},
 					{
-						"name": "presentacion",
+						"name": "sku",
 						"type": "String"
 					},
 					{
-						"name": "colores",
+						"name": "ribbon",
 						"type": "String"
 					},
 					{
-						"name": "familia_id",
+						"name": "price",
 						"type": "String"
 					},
 					{
-						"name": "familia",
+						"name": "surcharge",
 						"type": "String"
 					},
 					{
-						"name": "marca",
+						"name": "visible",
 						"type": "String"
 					},
 					{
-						"name": "clase",
+						"name": "discountMode",
 						"type": "String"
 					},
 					{
-						"name": "modelo",
+						"name": "discountValue",
 						"type": "String"
 					},
 					{
-						"name": "item_grupo_1",
+						"name": "inventory",
 						"type": "String"
 					},
 					{
-						"name": "item_grupo_2",
+						"name": "weight",
 						"type": "String"
 					},
 					{
-						"name": "item_grupo_3",
+						"name": "cost",
 						"type": "String"
 					},
 					{
-						"name": "precio",
+						"name": "productOptionName1",
 						"type": "String"
 					},
 					{
-						"name": "stock",
+						"name": "productOptionType1",
 						"type": "String"
 					},
 					{
-						"name": "image_url",
+						"name": "productOptionDescription1",
 						"type": "String"
 					},
 					{
-						"name": "image_url_1",
+						"name": "productOptionName2",
 						"type": "String"
 					},
 					{
-						"name": "image_url_2",
+						"name": "productOptionType2",
 						"type": "String"
 					},
 					{
-						"name": "image_url_3",
+						"name": "productOptionDescription2",
 						"type": "String"
 					},
 					{
-						"name": "image_url_4",
+						"name": "productOptionName3",
 						"type": "String"
 					},
 					{
-						"name": "image_url_5",
+						"name": "productOptionType3",
 						"type": "String"
 					},
 					{
-						"name": "caracteristicas",
+						"name": "productOptionDescription3",
 						"type": "String"
 					},
 					{
-						"name": "itemref_1",
+						"name": "productOptionName4",
 						"type": "String"
 					},
 					{
-						"name": "itemref_2",
+						"name": "productOptionType4",
 						"type": "String"
 					},
 					{
-						"name": "itemref_3",
+						"name": "productOptionDescription4",
 						"type": "String"
 					},
 					{
-						"name": "itemref_4",
+						"name": "productOptionName5",
 						"type": "String"
 					},
 					{
-						"name": "itemref_5",
+						"name": "productOptionType5",
 						"type": "String"
 					},
 					{
-						"name": "itemref_6",
+						"name": "productOptionDescription5",
 						"type": "String"
 					},
 					{
-						"name": "itemref_7",
+						"name": "productOptionName6",
 						"type": "String"
 					},
 					{
-						"name": "itemref_8",
+						"name": "productOptionType6",
 						"type": "String"
 					},
 					{
-						"name": "itemref_9",
+						"name": "productOptionDescription6",
 						"type": "String"
 					},
 					{
-						"name": "itemref_10",
+						"name": "additionalInfoTitle1",
 						"type": "String"
 					},
 					{
-						"name": "itemref_11",
+						"name": "additionalInfoDescription1",
 						"type": "String"
 					},
 					{
-						"name": "itemref_12",
+						"name": "additionalInfoTitle2",
 						"type": "String"
 					},
 					{
-						"name": "itemref_13",
+						"name": "additionalInfoDescription2",
 						"type": "String"
 					},
 					{
-						"name": "itemref_14",
+						"name": "additionalInfoTitle3",
 						"type": "String"
 					},
 					{
-						"name": "privacidad",
+						"name": "additionalInfoDescription3",
 						"type": "String"
 					},
 					{
-						"name": "peso",
+						"name": "additionalInfoTitle4",
 						"type": "String"
 					},
 					{
-						"name": "medida",
+						"name": "additionalInfoDescription4",
 						"type": "String"
 					},
 					{
-						"name": "equivalencia",
+						"name": "additionalInfoTitle5",
+						"type": "String"
+					},
+					{
+						"name": "additionalInfoDescription5",
+						"type": "String"
+					},
+					{
+						"name": "additionalInfoTitle6",
+						"type": "String"
+					},
+					{
+						"name": "additionalInfoDescription6",
+						"type": "String"
+					},
+					{
+						"name": "customTextField1",
+						"type": "String"
+					},
+					{
+						"name": "customTextCharLimit1",
+						"type": "String"
+					},
+					{
+						"name": "customTextMandatory1",
+						"type": "String"
+					},
+					{
+						"name": "customTextField2",
+						"type": "String"
+					},
+					{
+						"name": "customTextCharLimit2",
+						"type": "String"
+					},
+					{
+						"name": "customTextMandatory2",
+						"type": "String"
+					},
+					{
+						"name": "brand",
 						"type": "String"
 					}
 				]
@@ -576,6 +1361,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureMySql1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureMySql",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureMySql1_connectionString')]"
 				}
 			},
 			"dependsOn": []
@@ -612,7 +1410,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/testpython/blobs/",
-					"blobPathEndsWith": ".csv",
+					"blobPathEndsWith": "inventario_eurocomp.csv",
 					"ignoreEmptyBlobs": false,
 					"scope": "[parameters('trigger2_properties_typeProperties_scope')]",
 					"events": [
@@ -622,6 +1420,31 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/pipeline1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CSVaDB')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "WranglingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"name": "InventarioEUROcsv",
+							"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> InventarioEUROcsv",
+							"dataset": {
+								"referenceName": "inventario_eurocompcsv",
+								"type": "DatasetReference"
+							}
+						}
+					],
+					"script": "section Section1;\r\nshared InventarioEUROcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let \n    Source = #\"InventarioEUROcsv\",\n  #\"Removed columns 1\" = Table.RemoveColumns(Source, {\"cod_producto\", \"cod_proveedor\", \"cod_hacienda\", \"desc_corta\", \"presentacion\", \"colores\", \"familia_id\", \"clase\", \"modelo\", \"item_grupo_1\", \"item_grupo_2\", \"item_grupo_3\", \"image_url_2\", \"image_url_3\", \"image_url_4\", \"image_url_5\", \"caracteristicas\", \"itemref_1\", \"itemref_2\", \"itemref_3\", \"itemref_4\", \"itemref_5\", \"itemref_6\", \"itemref_7\", \"itemref_8\", \"itemref_9\", \"itemref_10\", \"itemref_11\", \"itemref_12\", \"itemref_13\", \"itemref_14\", \"privacidad\", \"peso\", \"medida\", \"equivalencia\"}),\n    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed columns 1\",{{\"codigo\", \"sku\"}, {\"descripcion\", \"name\"}, {\"familia\", \"collection\"}, {\"marca\", \"brand\"}, {\"precio\", \"price\"}, {\"stock\", \"inventory\"}}),\n    #\"Added Custom\" = Table.AddColumn( #\"Renamed Columns\", \"fieldType\", each \"Product\"),\n    #\"Added Custom1\" = Table.AddColumn(#\"Added Custom\", \"handleId\", each \"product_\"&[sku]),\n    #\"Added Custom2\" = Table.AddColumn(#\"Added Custom1\", \"description\", each \"Imágenes de referencia\n ¿Cómo comprar?\n 1-Agrega al carrito en “COMPRAR”\n 2-Registro: Completa tus datos y sigue los pasos\n 3-Selecciona el método de entrega:\"),\n     #\"Inserted Prefix\" = Table.AddColumn(#\"Added Custom2\", \"Prefix\", each \"eurocompcr.com/\" & [#\"image_url\"], type text),\n  #\"Inserted conditional column\" = Table.AddColumn(#\"Inserted Prefix\", \"Custom\", each if [Prefix] <> \"eurocompcr.com/\" then [Prefix] else \"\"),\n  #\"Removed columns 2\" = Table.RemoveColumns(#\"Inserted conditional column\", {\"Prefix\"}),\n  #\"Renamed columns 1\" = Table.RenameColumns(#\"Removed columns 2\", {{\"Custom\", \"Prefix\"}}),\n    #\"Inserted Prefix1\" = Table.AddColumn(#\"Renamed columns 1\", \"Prefix.1\", each \"eurocompcr.com/\" & [#\"image_url_1\"], type text),\n  #\"Inserted conditional column 1\" = Table.AddColumn(#\"Inserted Prefix1\", \"Custom\", each if [Prefix.1] <> \"eurocompcr.com/\" then [Prefix.1] else \"\"),\n  #\"Removed columns 3\" = Table.RemoveColumns(#\"Inserted conditional column 1\", {\"Prefix.1\"}),\n  #\"Renamed columns 2\" = Table.RenameColumns(#\"Removed columns 3\", {{\"Custom\", \"Prefix.1\"}}),\n    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed columns 2\",{\"image_url\",\"image_url_1\"}),\n    #\"Merged Columns\" = Table.CombineColumns(#\"Removed Columns1\",{\"Prefix\", \"Prefix.1\"},Combiner.CombineTextByDelimiter(\";\", QuoteStyle.None),\"productImageUrl\"),\n    #\"Replaced Value\" = Table.ReplaceValue(#\"Merged Columns\",\";\",\"\",Replacer.ReplaceValue,{\"productImageUrl\"}),\n  #\"Replaced value 1\" = Table.ReplaceValue(#\"Replaced Value\", \"jpg;\", \"jpg\", Replacer.ReplaceText, {\"productImageUrl\"}),\n  #\"Changed column type\" = Table.TransformColumnTypes(#\"Replaced value 1\", {{\"price\", Currency.Type}}),\n    #\"Added Custom4\" = Table.AddColumn(#\"Changed column type\", \"Custom.1\", each [price]*600.0*1.2*1.13),\n    #\"Filtered Rows\" = Table.SelectRows(#\"Added Custom4\", each ([inventory] <> \"1.000\")),\n    #\"Removed Columns2\" = Table.RemoveColumns(#\"Filtered Rows\",{\"price\"}),\n    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns2\",{{\"Custom.1\", \"price\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"price\", Currency.Type}}),\n  #\"Inserted rounding\" = Table.AddColumn(#\"Changed Type\", \"Inserted rounding\", each Number.Round([price]/1000, 2), Currency.Type),\n  #\"Inserted multiplication\" = Table.AddColumn(#\"Inserted rounding\", \"Multiplication\", each [Inserted rounding] * 1000, Currency.Type),\n  #\"Filtered rows 1\" = Table.SelectRows(#\"Inserted multiplication\", each [Multiplication] <> 0),\n\n  #\"Removed Columns3\" = Table.RemoveColumns(#\"Filtered rows 1\",{\"price\", \"Inserted rounding\"}),\n    #\"Renamed Columns2\" = Table.RenameColumns(#\"Removed Columns3\",{{\"Multiplication\", \"price\"}}),\n    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns2\",{{\"inventory\", Int64.Type}}),\n    #\"Added Conditional Column\" = Table.AddColumn(#\"Changed Type1\", \"Inventory1\", each if [inventory] > 30 then 30 else [inventory]),\n    #\"Renamed Columns3\" = Table.RenameColumns(#\"Added Conditional Column\",{{\"inventory\", \"inventory3\"}, {\"Inventory1\", \"inventory\"}}),\n    #\"Removed Columns4\" = Table.RemoveColumns(#\"Renamed Columns3\",{\"inventory3\"}),\n    #\"Added Custom5\" = Table.AddColumn(#\"Removed Columns4\", \"ribbon\", each \"\"),\n    #\"Added Custom6\" = Table.AddColumn(#\"Added Custom5\", \"surcharge\", each \"\"),\n    #\"Added Custom7\" = Table.AddColumn(#\"Added Custom6\", \"visible\", each \"TRUE\"),\n    #\"Added Custom8\" = Table.AddColumn(#\"Added Custom7\", \"discountMode\", each \"PERCENT\"),\n    #\"Added Custom9\" = Table.AddColumn(#\"Added Custom8\", \"discountValue\", each \"0\"),\n    #\"Added Custom10\" = Table.AddColumn(#\"Added Custom9\", \"weight\", each \"\"),\n    #\"Added Custom11\" = Table.AddColumn(#\"Added Custom10\", \"cost\", each \"\"),\n    #\"Added Custom12\" = Table.AddColumn(#\"Added Custom11\", \"productOptionName1\", each \"\"),\n    #\"Added Custom13\" = Table.AddColumn(#\"Added Custom12\", \"productOptionType1\", each \"\"),\n    #\"Added Custom14\" = Table.AddColumn(#\"Added Custom13\", \"productOptionDescription1\", each \"\"),\n    #\"Added Custom15\" = Table.AddColumn(#\"Added Custom14\", \"productOptionName2\", each \"\"),\n    #\"Added Custom16\" = Table.AddColumn(#\"Added Custom15\", \"productOptionType2\", each \"\"),\n    #\"Added Custom17\" = Table.AddColumn(#\"Added Custom16\", \"productOptionDescription2\", each \"\"),\n    #\"Added Custom18\" = Table.AddColumn(#\"Added Custom17\", \"productOptionName3\", each \"\"),\n    #\"Added Custom19\" = Table.AddColumn(#\"Added Custom18\", \"productOptionType3\", each \"\"),\n    #\"Added Custom20\" = Table.AddColumn(#\"Added Custom19\", \"productOptionDescription3\", each \"\"),\n    #\"Added Custom21\" = Table.AddColumn(#\"Added Custom20\", \"productOptionName4\", each \"\"),\n    #\"Added Custom22\" = Table.AddColumn(#\"Added Custom21\", \"productOptionType4\", each \"\"),\n    #\"Added Custom23\" = Table.AddColumn(#\"Added Custom22\", \"productOptionDescription4\", each \"\"),\n    #\"Added Custom24\" = Table.AddColumn(#\"Added Custom23\", \"productOptionName5\", each \"\"),\n    #\"Added Custom25\" = Table.AddColumn(#\"Added Custom24\", \"productOptionType5\", each \"\"),\n    #\"Added Custom26\" = Table.AddColumn(#\"Added Custom25\", \"productOptionDescription5\", each \"\"),\n    #\"Added Custom27\" = Table.AddColumn(#\"Added Custom26\", \"productOptionName6\", each \"\"),\n    #\"Added Custom28\" = Table.AddColumn(#\"Added Custom27\", \"productOptionType6\", each \"\"),\n    #\"Added Custom29\" = Table.AddColumn(#\"Added Custom28\", \"productOptionDescription6\", each \"\"),\n    #\"Added Custom30\" = Table.AddColumn(#\"Added Custom29\", \"additionalInfoTitle1\", each \"\"),\n    #\"Added Custom31\" = Table.AddColumn(#\"Added Custom30\", \"additionalInfoDescription1\", each \"\"),\n    #\"Added Custom32\" = Table.AddColumn(#\"Added Custom31\", \"additionalInfoTitle2\", each \"\"),\n    #\"Added Custom33\" = Table.AddColumn(#\"Added Custom32\", \"additionalInfoDescription2\", each \"\"),\n    #\"Added Custom34\" = Table.AddColumn(#\"Added Custom33\", \"additionalInfoTitle3\", each \"\"),\n    #\"Added Custom35\" = Table.AddColumn(#\"Added Custom34\", \"additionalInfoDescription3\", each \"\"),\n    #\"Added Custom36\" = Table.AddColumn(#\"Added Custom35\", \"additionalInfoTitle4\", each \"\"),\n    #\"Added Custom37\" = Table.AddColumn(#\"Added Custom36\", \"additionalInfoDescription4\", each \"\"),\n    #\"Added Custom38\" = Table.AddColumn(#\"Added Custom37\", \"additionalInfoTitle5\", each \"\"),\n    #\"Added Custom39\" = Table.AddColumn(#\"Added Custom38\", \"additionalInfoDescription5\", each \"\"),\n    #\"Added Custom40\" = Table.AddColumn(#\"Added Custom39\", \"additionalInfoTitle6\", each \"\"),\n    #\"Added Custom41\" = Table.AddColumn(#\"Added Custom40\", \"additionalInfoDescription6\", each \"\"),\n    #\"Added Custom42\" = Table.AddColumn(#\"Added Custom41\", \"customTextField1\", each \"\"),\n    #\"Added Custom43\" = Table.AddColumn(#\"Added Custom42\", \"customTextCharLimit1\", each \"\"),\n    #\"Added Custom44\" = Table.AddColumn(#\"Added Custom43\", \"customTextMandatory1\", each \"\"),\n    #\"Added Custom45\" = Table.AddColumn(#\"Added Custom44\", \"customTextField2\", each \"\"),\n    #\"Added Custom46\" = Table.AddColumn(#\"Added Custom45\", \"customTextCharLimit2\", each \"\"),\n    #\"Added Custom47\" = Table.AddColumn(#\"Added Custom46\", \"customTextMandatory2\", each \"\"),\n    #\"Reordered Columns7\" = Table.ReorderColumns(#\"Added Custom47\",{\"handleId\",\"fieldType\",\"name\",\"description\",\"productImageUrl\",\"collection\",\"sku\",\"ribbon\",\"price\",\"surcharge\",\"visible\",\"discountMode\",\"discountValue\",\"inventory\",\"weight\",\"cost\",\"productOptionName1\",\"productOptionType1\",\"productOptionDescription1\",\"productOptionName2\",\"productOptionType2\",\"productOptionDescription2\",\"productOptionName3\",\"productOptionType3\",\"productOptionDescription3\",\"productOptionName4\",\"productOptionType4\",\"productOptionDescription4\",\"productOptionName5\",\"productOptionType5\",\"productOptionDescription5\",\"productOptionName6\",\"productOptionType6\",\"productOptionDescription6\",\"additionalInfoTitle1\",\"additionalInfoDescription1\",\"additionalInfoTitle2\",\"additionalInfoDescription2\",\"additionalInfoTitle3\",\"additionalInfoDescription3\",\"additionalInfoTitle4\",\"additionalInfoDescription4\",\"additionalInfoTitle5\",\"additionalInfoDescription5\",\"additionalInfoTitle6\",\"additionalInfoDescription6\",\"customTextField1\",\"customTextCharLimit1\",\"customTextMandatory1\",\"customTextField2\",\"customTextCharLimit2\",\"customTextMandatory2\",\"brand\"}),\r\n  #\"Changed column type 1\" = Table.TransformColumnTypes(#\"Reordered Columns7\", {{\"visible\", type text}})\n\nin\n#\"Changed column type 1\";\r\n",
+					"documentLocale": "en-us"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/inventario_eurocompcsv')]"
 			]
 		},
 		{
@@ -636,17 +1459,17 @@
 							"name": "InventarioEUROcsv",
 							"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> InventarioEUROcsv",
 							"dataset": {
-								"referenceName": "InventarioEUROcsv",
+								"referenceName": "inventario_eurocompcsv",
 								"type": "DatasetReference"
 							}
 						}
 					],
-					"script": "section Section1;\r\nshared InventarioEUROcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let \n    Source = #\"InventarioEUROcsv\",\n  #\"Removed columns 1\" = Table.RemoveColumns(Source, {\"cod_producto\", \"cod_proveedor\", \"cod_hacienda\", \"desc_corta\", \"presentacion\", \"colores\", \"familia_id\", \"clase\", \"modelo\", \"item_grupo_1\", \"item_grupo_2\", \"item_grupo_3\", \"image_url_2\", \"image_url_3\", \"image_url_4\", \"image_url_5\", \"caracteristicas\", \"itemref_1\", \"itemref_2\", \"itemref_3\", \"itemref_4\", \"itemref_5\", \"itemref_6\", \"itemref_7\", \"itemref_8\", \"itemref_9\", \"itemref_10\", \"itemref_11\", \"itemref_12\", \"itemref_13\", \"itemref_14\", \"privacidad\", \"peso\", \"medida\", \"equivalencia\"}),\n    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed columns 1\",{{\"codigo\", \"sku\"}, {\"descripcion\", \"name\"}, {\"familia\", \"collection\"}, {\"marca\", \"brand\"}, {\"precio\", \"price\"}, {\"stock\", \"inventory\"}}),\n    #\"Added Custom\" = Table.AddColumn( #\"Renamed Columns\", \"fieldType\", each \"Product\"),\n    #\"Added Custom1\" = Table.AddColumn(#\"Added Custom\", \"handleId\", each \"product_\"&[sku]),\n    #\"Added Custom2\" = Table.AddColumn(#\"Added Custom1\", \"description\", each \"Imágenes de referencia\n ¿Cómo comprar?\n 1-Agrega al carrito en “COMPRAR”\n 2-Registro: Completa tus datos y sigue los pasos\n 3-Selecciona el método de entrega:\"),\n     #\"Inserted Prefix\" = Table.AddColumn(#\"Added Custom2\", \"Prefix\", each \"eurocompcr.com/\" & [#\"image_url\"], type text),\n  #\"Inserted conditional column\" = Table.AddColumn(#\"Inserted Prefix\", \"Custom\", each if [Prefix] <> \"eurocompcr.com/\" then [Prefix] else \"\"),\n  #\"Removed columns 2\" = Table.RemoveColumns(#\"Inserted conditional column\", {\"Prefix\"}),\n  #\"Renamed columns 1\" = Table.RenameColumns(#\"Removed columns 2\", {{\"Custom\", \"Prefix\"}}),\n    #\"Inserted Prefix1\" = Table.AddColumn(#\"Renamed columns 1\", \"Prefix.1\", each \"eurocompcr.com/\" & [#\"image_url_1\"], type text),\n  #\"Inserted conditional column 1\" = Table.AddColumn(#\"Inserted Prefix1\", \"Custom\", each if [Prefix.1] <> \"eurocompcr.com/\" then [Prefix.1] else \"\"),\n  #\"Removed columns 3\" = Table.RemoveColumns(#\"Inserted conditional column 1\", {\"Prefix.1\"}),\n  #\"Renamed columns 2\" = Table.RenameColumns(#\"Removed columns 3\", {{\"Custom\", \"Prefix.1\"}}),\n    #\"Removed Columns1\" = Table.RemoveColumns(#\"Renamed columns 2\",{\"image_url\",\"image_url_1\"}),\n    #\"Merged Columns\" = Table.CombineColumns(#\"Removed Columns1\",{\"Prefix\", \"Prefix.1\"},Combiner.CombineTextByDelimiter(\";\", QuoteStyle.None),\"productImageUrl\"),\n    #\"Replaced Value\" = Table.ReplaceValue(#\"Merged Columns\",\";\",\"\",Replacer.ReplaceValue,{\"productImageUrl\"}),\n  #\"Replaced value 1\" = Table.ReplaceValue(#\"Replaced Value\", \"jpg;\", \"jpg\", Replacer.ReplaceText, {\"productImageUrl\"}),\n  #\"Changed column type\" = Table.TransformColumnTypes(#\"Replaced value 1\", {{\"price\", Currency.Type}}),\n    #\"Added Custom4\" = Table.AddColumn(#\"Changed column type\", \"Custom.1\", each [price]*600.0*1.2*1.13),\n    #\"Filtered Rows\" = Table.SelectRows(#\"Added Custom4\", each ([inventory] <> \"1.000\")),\n    #\"Removed Columns2\" = Table.RemoveColumns(#\"Filtered Rows\",{\"price\"}),\n    #\"Renamed Columns1\" = Table.RenameColumns(#\"Removed Columns2\",{{\"Custom.1\", \"price\"}}),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Renamed Columns1\",{{\"price\", Currency.Type}}),\n  #\"Inserted rounding\" = Table.AddColumn(#\"Changed Type\", \"Inserted rounding\", each Number.Round([price]/1000, 2), Currency.Type),\n  #\"Inserted multiplication\" = Table.AddColumn(#\"Inserted rounding\", \"Multiplication\", each [Inserted rounding] * 1000, Currency.Type),\n  #\"Filtered rows 1\" = Table.SelectRows(#\"Inserted multiplication\", each [Multiplication] <> 0),\n\n  #\"Removed Columns3\" = Table.RemoveColumns(#\"Filtered rows 1\",{\"price\", \"Inserted rounding\"}),\n    #\"Renamed Columns2\" = Table.RenameColumns(#\"Removed Columns3\",{{\"Multiplication\", \"price\"}}),\n    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns2\",{{\"inventory\", Int64.Type}}),\n    #\"Added Conditional Column\" = Table.AddColumn(#\"Changed Type1\", \"Inventory1\", each if [inventory] > 30 then 30 else [inventory]),\n    #\"Renamed Columns3\" = Table.RenameColumns(#\"Added Conditional Column\",{{\"inventory\", \"inventory3\"}, {\"Inventory1\", \"inventory\"}}),\n    #\"Removed Columns4\" = Table.RemoveColumns(#\"Renamed Columns3\",{\"inventory3\"}),\n    #\"Added Custom5\" = Table.AddColumn(#\"Removed Columns4\", \"ribbon\", each \"\"),\n    #\"Added Custom6\" = Table.AddColumn(#\"Added Custom5\", \"surcharge\", each \"\"),\n    #\"Added Custom7\" = Table.AddColumn(#\"Added Custom6\", \"visible\", each \"TRUE\"),\n    #\"Added Custom8\" = Table.AddColumn(#\"Added Custom7\", \"discountMode\", each \"PERCENT\"),\n    #\"Added Custom9\" = Table.AddColumn(#\"Added Custom8\", \"discountValue\", each \"0\"),\n    #\"Added Custom10\" = Table.AddColumn(#\"Added Custom9\", \"weight\", each \"\"),\n    #\"Added Custom11\" = Table.AddColumn(#\"Added Custom10\", \"cost\", each \"\"),\n    #\"Added Custom12\" = Table.AddColumn(#\"Added Custom11\", \"productOptionName1\", each \"\"),\n    #\"Added Custom13\" = Table.AddColumn(#\"Added Custom12\", \"productOptionType1\", each \"\"),\n    #\"Added Custom14\" = Table.AddColumn(#\"Added Custom13\", \"productOptionDescription1\", each \"\"),\n    #\"Added Custom15\" = Table.AddColumn(#\"Added Custom14\", \"productOptionName2\", each \"\"),\n    #\"Added Custom16\" = Table.AddColumn(#\"Added Custom15\", \"productOptionType2\", each \"\"),\n    #\"Added Custom17\" = Table.AddColumn(#\"Added Custom16\", \"productOptionDescription2\", each \"\"),\n    #\"Added Custom18\" = Table.AddColumn(#\"Added Custom17\", \"productOptionName3\", each \"\"),\n    #\"Added Custom19\" = Table.AddColumn(#\"Added Custom18\", \"productOptionType3\", each \"\"),\n    #\"Added Custom20\" = Table.AddColumn(#\"Added Custom19\", \"productOptionDescription3\", each \"\"),\n    #\"Added Custom21\" = Table.AddColumn(#\"Added Custom20\", \"productOptionName4\", each \"\"),\n    #\"Added Custom22\" = Table.AddColumn(#\"Added Custom21\", \"productOptionType4\", each \"\"),\n    #\"Added Custom23\" = Table.AddColumn(#\"Added Custom22\", \"productOptionDescription4\", each \"\"),\n    #\"Added Custom24\" = Table.AddColumn(#\"Added Custom23\", \"productOptionName5\", each \"\"),\n    #\"Added Custom25\" = Table.AddColumn(#\"Added Custom24\", \"productOptionType5\", each \"\"),\n    #\"Added Custom26\" = Table.AddColumn(#\"Added Custom25\", \"productOptionDescription5\", each \"\"),\n    #\"Added Custom27\" = Table.AddColumn(#\"Added Custom26\", \"productOptionName6\", each \"\"),\n    #\"Added Custom28\" = Table.AddColumn(#\"Added Custom27\", \"productOptionType6\", each \"\"),\n    #\"Added Custom29\" = Table.AddColumn(#\"Added Custom28\", \"productOptionDescription6\", each \"\"),\n    #\"Added Custom30\" = Table.AddColumn(#\"Added Custom29\", \"additionalInfoTitle1\", each \"\"),\n    #\"Added Custom31\" = Table.AddColumn(#\"Added Custom30\", \"additionalInfoDescription1\", each \"\"),\n    #\"Added Custom32\" = Table.AddColumn(#\"Added Custom31\", \"additionalInfoTitle2\", each \"\"),\n    #\"Added Custom33\" = Table.AddColumn(#\"Added Custom32\", \"additionalInfoDescription2\", each \"\"),\n    #\"Added Custom34\" = Table.AddColumn(#\"Added Custom33\", \"additionalInfoTitle3\", each \"\"),\n    #\"Added Custom35\" = Table.AddColumn(#\"Added Custom34\", \"additionalInfoDescription3\", each \"\"),\n    #\"Added Custom36\" = Table.AddColumn(#\"Added Custom35\", \"additionalInfoTitle4\", each \"\"),\n    #\"Added Custom37\" = Table.AddColumn(#\"Added Custom36\", \"additionalInfoDescription4\", each \"\"),\n    #\"Added Custom38\" = Table.AddColumn(#\"Added Custom37\", \"additionalInfoTitle5\", each \"\"),\n    #\"Added Custom39\" = Table.AddColumn(#\"Added Custom38\", \"additionalInfoDescription5\", each \"\"),\n    #\"Added Custom40\" = Table.AddColumn(#\"Added Custom39\", \"additionalInfoTitle6\", each \"\"),\n    #\"Added Custom41\" = Table.AddColumn(#\"Added Custom40\", \"additionalInfoDescription6\", each \"\"),\n    #\"Added Custom42\" = Table.AddColumn(#\"Added Custom41\", \"customTextField1\", each \"\"),\n    #\"Added Custom43\" = Table.AddColumn(#\"Added Custom42\", \"customTextCharLimit1\", each \"\"),\n    #\"Added Custom44\" = Table.AddColumn(#\"Added Custom43\", \"customTextMandatory1\", each \"\"),\n    #\"Added Custom45\" = Table.AddColumn(#\"Added Custom44\", \"customTextField2\", each \"\"),\n    #\"Added Custom46\" = Table.AddColumn(#\"Added Custom45\", \"customTextCharLimit2\", each \"\"),\n    #\"Added Custom47\" = Table.AddColumn(#\"Added Custom46\", \"customTextMandatory2\", each \"\"),\n    #\"Reordered Columns7\" = Table.ReorderColumns(#\"Added Custom47\",{\"handleId\",\"fieldType\",\"name\",\"description\",\"productImageUrl\",\"collection\",\"sku\",\"ribbon\",\"price\",\"surcharge\",\"visible\",\"discountMode\",\"discountValue\",\"inventory\",\"weight\",\"cost\",\"productOptionName1\",\"productOptionType1\",\"productOptionDescription1\",\"productOptionName2\",\"productOptionType2\",\"productOptionDescription2\",\"productOptionName3\",\"productOptionType3\",\"productOptionDescription3\",\"productOptionName4\",\"productOptionType4\",\"productOptionDescription4\",\"productOptionName5\",\"productOptionType5\",\"productOptionDescription5\",\"productOptionName6\",\"productOptionType6\",\"productOptionDescription6\",\"additionalInfoTitle1\",\"additionalInfoDescription1\",\"additionalInfoTitle2\",\"additionalInfoDescription2\",\"additionalInfoTitle3\",\"additionalInfoDescription3\",\"additionalInfoTitle4\",\"additionalInfoDescription4\",\"additionalInfoTitle5\",\"additionalInfoDescription5\",\"additionalInfoTitle6\",\"additionalInfoDescription6\",\"customTextField1\",\"customTextCharLimit1\",\"customTextMandatory1\",\"customTextField2\",\"customTextCharLimit2\",\"customTextMandatory2\",\"brand\"}),\r\n  #\"Changed column type 1\" = Table.TransformColumnTypes(#\"Reordered Columns7\", {{\"visible\", type text}})\n\nin\n#\"Changed column type 1\";\r\n",
+					"script": "section Section1;\r\nshared inventario_eurocompcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared InventarioEUROcsv = let AdfDoc = AzureStorage.BlobContents(\"https://eurocomp417d5b.blob.core.windows.net/testpython/inventario_eurocomp.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"InventarioEUROcsv\" in Source;\r\n",
 					"documentLocale": "en-us"
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/InventarioEUROcsv')]"
+				"[concat(variables('factoryId'), '/datasets/inventario_eurocompcsv')]"
 			]
 		}
 	]
