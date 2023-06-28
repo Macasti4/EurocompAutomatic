@@ -14,7 +14,7 @@
 				"fileName": "inventario_eurocomp.xlsx",
 				"container": "testpython"
 			},
-			"firstRowAsHeader": false
+			"firstRowAsHeader": true
 		},
 		"schema": [
 			{

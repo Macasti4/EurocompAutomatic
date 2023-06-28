@@ -16,20 +16,19 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "ExcelSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
+							"recursive": false,
 							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
 						"type": "AzureSqlSink",
+						"preCopyScript": "drop table EjemploTabla",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": true,
+						"tableOption": "autoCreate",
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
@@ -45,7 +44,7 @@
 								"sink": {
 									"name": "handleId",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -57,7 +56,7 @@
 								"sink": {
 									"name": "fieldType",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -69,7 +68,7 @@
 								"sink": {
 									"name": "name",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -81,7 +80,7 @@
 								"sink": {
 									"name": "description",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -93,7 +92,7 @@
 								"sink": {
 									"name": "productImageUrl",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -105,7 +104,7 @@
 								"sink": {
 									"name": "collection",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -117,7 +116,7 @@
 								"sink": {
 									"name": "sku",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -129,7 +128,7 @@
 								"sink": {
 									"name": "ribbon",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -140,10 +139,8 @@
 								},
 								"sink": {
 									"name": "price",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -154,10 +151,8 @@
 								},
 								"sink": {
 									"name": "surcharge",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -168,8 +163,8 @@
 								},
 								"sink": {
 									"name": "visible",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -181,7 +176,7 @@
 								"sink": {
 									"name": "discountMode",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -192,10 +187,8 @@
 								},
 								"sink": {
 									"name": "discountValue",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -206,8 +199,8 @@
 								},
 								"sink": {
 									"name": "inventory",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -218,10 +211,8 @@
 								},
 								"sink": {
 									"name": "weight",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -232,10 +223,8 @@
 								},
 								"sink": {
 									"name": "cost",
-									"type": "Decimal",
-									"physicalType": "decimal",
-									"scale": 2,
-									"precision": 10
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -247,7 +236,7 @@
 								"sink": {
 									"name": "productOptionName1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -259,7 +248,7 @@
 								"sink": {
 									"name": "productOptionType1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -271,7 +260,7 @@
 								"sink": {
 									"name": "productOptionDescription1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -283,7 +272,7 @@
 								"sink": {
 									"name": "productOptionName2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -295,7 +284,7 @@
 								"sink": {
 									"name": "productOptionType2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -307,7 +296,7 @@
 								"sink": {
 									"name": "productOptionDescription2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -319,7 +308,7 @@
 								"sink": {
 									"name": "productOptionName3",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -331,7 +320,7 @@
 								"sink": {
 									"name": "productOptionType3",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -343,7 +332,7 @@
 								"sink": {
 									"name": "productOptionDescription3",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -355,7 +344,7 @@
 								"sink": {
 									"name": "productOptionName4",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -367,7 +356,7 @@
 								"sink": {
 									"name": "productOptionType4",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -379,7 +368,7 @@
 								"sink": {
 									"name": "productOptionDescription4",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -391,7 +380,7 @@
 								"sink": {
 									"name": "productOptionName5",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -403,7 +392,7 @@
 								"sink": {
 									"name": "productOptionType5",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -415,7 +404,7 @@
 								"sink": {
 									"name": "productOptionDescription5",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -427,7 +416,7 @@
 								"sink": {
 									"name": "productOptionName6",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -439,7 +428,7 @@
 								"sink": {
 									"name": "productOptionType6",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -451,7 +440,7 @@
 								"sink": {
 									"name": "productOptionDescription6",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -463,7 +452,7 @@
 								"sink": {
 									"name": "additionalInfoTitle1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -475,7 +464,7 @@
 								"sink": {
 									"name": "additionalInfoDescription1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -487,7 +476,7 @@
 								"sink": {
 									"name": "additionalInfoTitle2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -499,7 +488,7 @@
 								"sink": {
 									"name": "additionalInfoDescription2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -511,7 +500,7 @@
 								"sink": {
 									"name": "additionalInfoTitle3",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -523,7 +512,7 @@
 								"sink": {
 									"name": "additionalInfoDescription3",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -535,7 +524,7 @@
 								"sink": {
 									"name": "additionalInfoTitle4",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -547,7 +536,7 @@
 								"sink": {
 									"name": "additionalInfoDescription4",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -559,7 +548,7 @@
 								"sink": {
 									"name": "additionalInfoTitle5",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -571,7 +560,7 @@
 								"sink": {
 									"name": "additionalInfoDescription5",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -583,7 +572,7 @@
 								"sink": {
 									"name": "additionalInfoTitle6",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -595,7 +584,7 @@
 								"sink": {
 									"name": "additionalInfoDescription6",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -607,7 +596,7 @@
 								"sink": {
 									"name": "customTextField1",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -618,8 +607,8 @@
 								},
 								"sink": {
 									"name": "customTextCharLimit1",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -630,8 +619,8 @@
 								},
 								"sink": {
 									"name": "customTextMandatory1",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -643,7 +632,7 @@
 								"sink": {
 									"name": "customTextField2",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -654,8 +643,8 @@
 								},
 								"sink": {
 									"name": "customTextCharLimit2",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -666,8 +655,8 @@
 								},
 								"sink": {
 									"name": "customTextMandatory2",
-									"type": "Boolean",
-									"physicalType": "bit"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
@@ -679,7 +668,7 @@
 								"sink": {
 									"name": "brand",
 									"type": "String",
-									"physicalType": "nvarchar"
+									"physicalType": "varchar"
 								}
 							}
 						],
@@ -692,7 +681,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "inventario_eurocompcsv",
+						"referenceName": "inventario_eurocomp",
 						"type": "DatasetReference"
 					}
 				],
