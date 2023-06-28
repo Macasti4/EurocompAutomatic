@@ -8,7 +8,7 @@
 					"name": "InventarioEUROcsv",
 					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> InventarioEUROcsv",
 					"dataset": {
-						"referenceName": "InventarioEUROcsv",
+						"referenceName": "inventario_eurocompcsv",
 						"type": "DatasetReference"
 					}
 				}
