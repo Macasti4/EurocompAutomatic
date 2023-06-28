@@ -1229,7 +1229,7 @@
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
 					"blobPathBeginsWith": "/testpython/blobs/",
-					"blobPathEndsWith": "inventario_eurocomp.csv",
+					"blobPathEndsWith": "inventario_eurocomp",
 					"ignoreEmptyBlobs": false,
 					"scope": "[parameters('trigger2_properties_typeProperties_scope')]",
 					"events": [
