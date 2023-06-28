@@ -3,44 +3,6 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Power Query1",
-				"type": "ExecuteWranglingDataflow",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "CSVaDB",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"queries": [
-						{
-							"queryName": "UserQuery",
-							"dataflowSinks": [
-								{
-									"name": "UserQueryAzureSqlTable1",
-									"dataset": {
-										"referenceName": "AzureSqlTable1",
-										"type": "DatasetReference"
-									},
-									"script": "sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tinput(\n\t\thandleId as string,\n\t\tfieldType as string,\n\t\tname as string,\n\t\tdescription as string,\n\t\tproductImageUrl as string,\n\t\tcollection as string,\n\t\tsku as string,\n\t\tribbon as string,\n\t\tprice as decimal(10,2),\n\t\tsurcharge as decimal(10,2),\n\t\tvisible as boolean,\n\t\tdiscountMode as string,\n\t\tdiscountValue as decimal(10,2),\n\t\tinventory as integer,\n\t\tweight as decimal(10,2),\n\t\tcost as decimal(10,2),\n\t\tproductOptionName1 as string,\n\t\tproductOptionType1 as string,\n\t\tproductOptionDescription1 as string,\n\t\tproductOptionName2 as string,\n\t\tproductOptionType2 as string,\n\t\tproductOptionDescription2 as string,\n\t\tproductOptionName3 as string,\n\t\tproductOptionType3 as string,\n\t\tproductOptionDescription3 as string,\n\t\tproductOptionName4 as string,\n\t\tproductOptionType4 as string,\n\t\tproductOptionDescription4 as string,\n\t\tproductOptionName5 as string,\n\t\tproductOptionType5 as string,\n\t\tproductOptionDescription5 as string,\n\t\tproductOptionName6 as string,\n\t\tproductOptionType6 as string,\n\t\tproductOptionDescription6 as string,\n\t\tadditionalInfoTitle1 as string,\n\t\tadditionalInfoDescription1 as string,\n\t\tadditionalInfoTitle2 as string,\n\t\tadditionalInfoDescription2 as string,\n\t\tadditionalInfoTitle3 as string,\n\t\tadditionalInfoDescription3 as string,\n\t\tadditionalInfoTitle4 as string,\n\t\tadditionalInfoDescription4 as string,\n\t\tadditionalInfoTitle5 as string,\n\t\tadditionalInfoDescription5 as string,\n\t\tadditionalInfoTitle6 as string,\n\t\tadditionalInfoDescription6 as string,\n\t\tcustomTextField1 as string,\n\t\tcustomTextCharLimit1 as integer,\n\t\tcustomTextMandatory1 as boolean,\n\t\tcustomTextField2 as string,\n\t\tcustomTextCharLimit2 as integer,\n\t\tcustomTextMandatory2 as boolean,\n\t\tbrand as string\n\t),\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> UserQueryAzureSqlTable1"
-								}
-							]
-						}
-					]
-				}
-			},
-			{
 				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
@@ -65,13 +27,662 @@
 						}
 					},
 					"sink": {
-						"type": "AzureMySqlSink",
-						"writeBatchSize": 10000,
-						"writeBatchTimeout": "00:00:30"
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": true,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "handleId",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "handleId",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "fieldType",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "fieldType",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "description",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "description",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productImageUrl",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productImageUrl",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "collection",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "collection",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "sku",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "sku",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "ribbon",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "ribbon",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "price",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "price",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "surcharge",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "surcharge",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "visible",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "visible",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "discountMode",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "discountMode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "discountValue",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "discountValue",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "inventory",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "inventory",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "weight",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "weight",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "cost",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cost",
+									"type": "Decimal",
+									"physicalType": "decimal",
+									"scale": 2,
+									"precision": 10
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName5",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType5",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription5",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionName6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionName6",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionType6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionType6",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "productOptionDescription6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "productOptionDescription6",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription3",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription4",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle5",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription5",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription5",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoTitle6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoTitle6",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "additionalInfoDescription6",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "additionalInfoDescription6",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextField1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextField1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextCharLimit1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextCharLimit1",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextMandatory1",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextMandatory1",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextField2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextField2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextCharLimit2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextCharLimit2",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "customTextMandatory2",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "customTextMandatory2",
+									"type": "Boolean",
+									"physicalType": "bit"
+								}
+							},
+							{
+								"source": {
+									"name": "brand",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "brand",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -81,13 +692,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "InventarioEUROcsv",
+						"referenceName": "inventario_eurocompcsv",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureMySqlTable1",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				]
