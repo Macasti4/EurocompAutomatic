@@ -1,5 +1,5 @@
 {
-	"name": "InventarioEUROcsv",
+	"name": "inventario_eurocompcsv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
